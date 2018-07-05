@@ -121,34 +121,34 @@ rm(mtx.avg, mtx.sig)
 identify_express_pattern <- function(x){
   classCode <- NA
   # AHP
-  if(x["P"]> x["M"] && x["H"]> x["P"] && x["H"]> x["M"] &&  x["PvsM"] &&  x["PvsH"] &&  x["MvsH"]) classCode <- "ClassNo.01"
-  if(x["M"]> x["P"] && x["H"]> x["P"] && x["H"]> x["M"] &&  x["PvsM"] &&  x["PvsH"] &&  x["MvsH"]) classCode <- "ClassNo.02"
-  if(x["P"]>=x["M"] && x["H"]> x["P"] && x["H"]> x["M"] && !x["PvsM"] &&  x["PvsH"] &&  x["MvsH"]) classCode <- "ClassNo.03"
-  if(x["M"]>=x["P"] && x["H"]> x["P"] && x["H"]> x["M"] && !x["PvsM"] &&  x["PvsH"] &&  x["MvsH"]) classCode <- "ClassNo.04"
+  if(x["P"]> x["M"] && x["H"]> x["P"] && x["H"]> x["M"] &&  x["PvsM"] &&  x["PvsH"] &&  x["MvsH"]) classCode <- "ClassNo.01" # H>P>M
+  if(x["M"]> x["P"] && x["H"]> x["P"] && x["H"]> x["M"] &&  x["PvsM"] &&  x["PvsH"] &&  x["MvsH"]) classCode <- "ClassNo.02" # H>M>P
+  if(x["P"]>=x["M"] && x["H"]> x["P"] && x["H"]> x["M"] && !x["PvsM"] &&  x["PvsH"] &&  x["MvsH"]) classCode <- "ClassNo.03" # H>P>=M
+  if(x["M"]> x["P"] && x["H"]> x["P"] && x["H"]> x["M"] && !x["PvsM"] &&  x["PvsH"] &&  x["MvsH"]) classCode <- "ClassNo.04" # H>M>=P(M!=P)
   # HP
-  if(x["P"]>=x["M"] && x["H"]>=x["P"] && x["H"]> x["M"] && !x["PvsM"] && !x["PvsH"] &&  x["MvsH"]) classCode <- "ClassNo.05"
-  if(x["M"]>=x["P"] && x["H"]> x["P"] && x["H"]>=x["M"] && !x["PvsM"] &&  x["PvsH"] && !x["MvsH"]) classCode <- "ClassNo.06"
-  if(x["P"]> x["M"] && x["H"]>=x["P"] && x["H"]> x["M"] &&  x["PvsM"] && !x["PvsH"] &&  x["MvsH"]) classCode <- "ClassNo.07"
-  if(x["P"]> x["M"] && x["P"]>=x["H"] && x["H"]> x["M"] &&  x["PvsM"] && !x["PvsH"] &&  x["MvsH"]) classCode <- "ClassNo.08"
-  if(x["M"]> x["P"] && x["H"]> x["P"] && x["H"]>=x["M"] &&  x["PvsM"] &&  x["PvsH"] && !x["MvsH"]) classCode <- "ClassNo.09"
-  if(x["M"]> x["P"] && x["H"]> x["P"] && x["M"]>=x["H"] &&  x["PvsM"] &&  x["PvsH"] && !x["MvsH"]) classCode <- "ClassNo.10"
+  if(x["P"]>=x["M"] && x["H"]>=x["P"] && x["H"]> x["M"] && !x["PvsM"] && !x["PvsH"] &&  x["MvsH"]) classCode <- "ClassNo.05" # H>=P>=M
+  if(x["M"]>=x["P"] && x["H"]> x["P"] && x["H"]>=x["M"] && !x["PvsM"] &&  x["PvsH"] && !x["MvsH"]) classCode <- "ClassNo.06" # H>=M>=P
+  if(x["P"]> x["M"] && x["H"]>=x["P"] && x["H"]> x["M"] &&  x["PvsM"] && !x["PvsH"] &&  x["MvsH"]) classCode <- "ClassNo.07" # H>=P>M
+  if(x["P"]> x["M"] && x["P"]> x["H"] && x["H"]> x["M"] &&  x["PvsM"] && !x["PvsH"] &&  x["MvsH"]) classCode <- "ClassNo.08" # P>=H>M(P!=H)
+  if(x["M"]> x["P"] && x["H"]> x["P"] && x["H"]> x["M"] &&  x["PvsM"] &&  x["PvsH"] && !x["MvsH"]) classCode <- "ClassNo.09" # H>=M>P
+  if(x["M"]> x["P"] && x["H"]> x["P"] && x["M"]>=x["H"] &&  x["PvsM"] &&  x["PvsH"] && !x["MvsH"]) classCode <- "ClassNo.10" # M>=H>P(M!=H)
   # MP
-  if(x["P"]> x["M"] && x["P"]>=x["H"] && x["H"]>=x["M"] &&  x["PvsM"] && !x["PvsH"] && !x["MvsH"]) classCode <- "ClassNo.11"
-  if(x["P"]> x["M"] && x["P"]> x["H"] && x["H"]> x["M"] &&  x["PvsM"] &&  x["PvsH"] &&  x["MvsH"]) classCode <- "ClassNo.12"
-  if(x["M"]> x["P"] && x["H"]> x["P"] && x["M"]> x["H"] &&  x["PvsM"] &&  x["PvsH"] &&  x["MvsH"]) classCode <- "ClassNo.13"
-  if(x["M"]> x["P"] && x["H"]>=x["P"] && x["M"]>=x["H"] &&  x["PvsM"] && !x["PvsH"] && !x["MvsH"]) classCode <- "ClassNo.14"
+  if(x["P"]> x["M"] && x["P"]>=x["H"] && x["H"]>=x["M"] &&  x["PvsM"] && !x["PvsH"] && !x["MvsH"]) classCode <- "ClassNo.11" # P>=H>=M
+  if(x["P"]> x["M"] && x["P"]> x["H"] && x["H"]> x["M"] &&  x["PvsM"] &&  x["PvsH"] &&  x["MvsH"]) classCode <- "ClassNo.12" # P>H>M
+  if(x["M"]> x["P"] && x["H"]> x["P"] && x["M"]> x["H"] &&  x["PvsM"] &&  x["PvsH"] &&  x["MvsH"]) classCode <- "ClassNo.13" # M>H>P
+  if(x["M"]> x["P"] && x["H"]>=x["P"] && x["M"]>=x["H"] &&  x["PvsM"] && !x["PvsH"] && !x["MvsH"]) classCode <- "ClassNo.14" # M>=H>=P
   # LP
-  if(x["M"]> x["P"] && x["H"]>=x["P"] && x["M"]> x["H"] &&  x["PvsM"] && !x["PvsH"] &&  x["MvsH"]) classCode <- "ClassNo.15"
-  if(x["M"]> x["P"] && x["P"]>=x["H"] && x["M"]> x["H"] &&  x["PvsM"] && !x["PvsH"] &&  x["MvsH"]) classCode <- "ClassNo.16"
-  if(x["P"]> x["M"] && x["P"]> x["H"] && x["H"]>=x["M"] &&  x["PvsM"] &&  x["PvsH"] && !x["MvsH"]) classCode <- "ClassNo.17"
-  if(x["P"]> x["M"] && x["P"]> x["H"] && x["M"]>=x["H"] &&  x["PvsM"] &&  x["PvsH"] && !x["MvsH"]) classCode <- "ClassNo.18"
-  if(x["M"]>=x["P"] && x["P"]>=x["H"] && x["M"]> x["H"] && !x["PvsM"] && !x["PvsH"] &&  x["MvsH"]) classCode <- "ClassNo.19"
-  if(x["P"]>=x["M"] && x["P"]> x["H"] && x["M"]>=x["H"] && !x["PvsM"] &&  x["PvsH"] && !x["MvsH"]) classCode <- "ClassNo.20"
+  if(x["M"]> x["P"] && x["H"]> x["P"] && x["M"]> x["H"] &&  x["PvsM"] && !x["PvsH"] &&  x["MvsH"]) classCode <- "ClassNo.15" # M>H>=P(H!=P)
+  if(x["M"]> x["P"] && x["P"]>=x["H"] && x["M"]> x["H"] &&  x["PvsM"] && !x["PvsH"] &&  x["MvsH"]) classCode <- "ClassNo.16" # M>P>=H
+  if(x["P"]> x["M"] && x["P"]> x["H"] && x["H"]> x["M"] &&  x["PvsM"] &&  x["PvsH"] && !x["MvsH"]) classCode <- "ClassNo.17" # P>H>=M(H!=M)
+  if(x["P"]> x["M"] && x["P"]> x["H"] && x["M"]>=x["H"] &&  x["PvsM"] &&  x["PvsH"] && !x["MvsH"]) classCode <- "ClassNo.18" # P>M>=H
+  if(x["M"]>=x["P"] && x["P"]>=x["H"] && x["M"]> x["H"] && !x["PvsM"] && !x["PvsH"] &&  x["MvsH"]) classCode <- "ClassNo.19" # M>=P>=H
+  if(x["P"]>=x["M"] && x["P"]> x["H"] && x["M"]>=x["H"] && !x["PvsM"] &&  x["PvsH"] && !x["MvsH"]) classCode <- "ClassNo.20" # P>=M>=H
   # BLP
-  if(x["M"]>=x["P"] && x["P"]> x["H"] && x["M"]> x["H"] && !x["PvsM"] &&  x["PvsH"] &&  x["MvsH"]) classCode <- "ClassNo.21"
-  if(x["P"]>=x["M"] && x["P"]> x["H"] && x["M"]> x["H"] && !x["PvsM"] &&  x["PvsH"] &&  x["MvsH"]) classCode <- "ClassNo.22"
-  if(x["M"]> x["P"] && x["P"]> x["H"] && x["M"]> x["H"] &&  x["PvsM"] &&  x["PvsH"] &&  x["MvsH"]) classCode <- "ClassNo.23"
-  if(x["P"]> x["M"] && x["P"]> x["H"] && x["M"]> x["H"] &&  x["PvsM"] &&  x["PvsH"] &&  x["MvsH"]) classCode <- "ClassNo.24"
+  if(x["M"]> x["P"] && x["P"]> x["H"] && x["M"]> x["H"] && !x["PvsM"] &&  x["PvsH"] &&  x["MvsH"]) classCode <- "ClassNo.21" # M>=P>H(M!=P) 
+  if(x["P"]>=x["M"] && x["P"]> x["H"] && x["M"]> x["H"] && !x["PvsM"] &&  x["PvsH"] &&  x["MvsH"]) classCode <- "ClassNo.22" # P>=M>H
+  if(x["M"]> x["P"] && x["P"]> x["H"] && x["M"]> x["H"] &&  x["PvsM"] &&  x["PvsH"] &&  x["MvsH"]) classCode <- "ClassNo.23" # M>P>H
+  if(x["P"]> x["M"] && x["P"]> x["H"] && x["M"]> x["H"] &&  x["PvsM"] &&  x["PvsH"] &&  x["MvsH"]) classCode <- "ClassNo.24" # P>M>H
   #
   return(classCode)
 }
