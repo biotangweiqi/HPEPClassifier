@@ -130,8 +130,8 @@ identify_express_pattern <- function(x){
   if(x["M"]>=x["P"] && x["H"]> x["P"] && x["H"]>=x["M"] && !x["PvsM"] &&  x["PvsH"] && !x["MvsH"]) classCode <- "ClassNo.06" # H>=M>=P
   if(x["P"]> x["M"] && x["H"]>=x["P"] && x["H"]> x["M"] &&  x["PvsM"] && !x["PvsH"] &&  x["MvsH"]) classCode <- "ClassNo.07" # H>=P>M
   if(x["P"]> x["M"] && x["P"]> x["H"] && x["H"]> x["M"] &&  x["PvsM"] && !x["PvsH"] &&  x["MvsH"]) classCode <- "ClassNo.08" # P>=H>M(P!=H)
-  if(x["M"]> x["P"] && x["H"]> x["P"] && x["H"]> x["M"] &&  x["PvsM"] &&  x["PvsH"] && !x["MvsH"]) classCode <- "ClassNo.09" # H>=M>P
-  if(x["M"]> x["P"] && x["H"]> x["P"] && x["M"]>=x["H"] &&  x["PvsM"] &&  x["PvsH"] && !x["MvsH"]) classCode <- "ClassNo.10" # M>=H>P(M!=H)
+  if(x["M"]> x["P"] && x["H"]> x["P"] && x["H"]>=x["M"] &&  x["PvsM"] &&  x["PvsH"] && !x["MvsH"]) classCode <- "ClassNo.09" # H>=M>P
+  if(x["M"]> x["P"] && x["H"]> x["P"] && x["M"]> x["H"] &&  x["PvsM"] &&  x["PvsH"] && !x["MvsH"]) classCode <- "ClassNo.10" # M>=H>P(M!=H)
   # MP
   if(x["P"]> x["M"] && x["P"]>=x["H"] && x["H"]>=x["M"] &&  x["PvsM"] && !x["PvsH"] && !x["MvsH"]) classCode <- "ClassNo.11" # P>=H>=M
   if(x["P"]> x["M"] && x["P"]> x["H"] && x["H"]> x["M"] &&  x["PvsM"] &&  x["PvsH"] &&  x["MvsH"]) classCode <- "ClassNo.12" # P>H>M
