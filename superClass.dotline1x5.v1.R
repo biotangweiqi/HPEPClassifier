@@ -25,7 +25,7 @@ data.MP <- data.frame(
 # LP
 data.LP <- data.frame(
   x = factor(c("LP", "H", "HP", "H"), levels = c("LP", "H", "HP")),
-  y = c(1, 1, 2, 1.5),
+  y = c(2, 2, 3, 2.5),
   g = c("a", "a", "a", "c")
 )
 # BLP
